@@ -1,6 +1,6 @@
 // lib/widgets/column_section.dart
 import 'package:flutter/material.dart';
-import '../models/task.dart';
+import '../models/task/task.dart';
 import 'task_card.dart';
 
 class ColumnSection extends StatelessWidget {

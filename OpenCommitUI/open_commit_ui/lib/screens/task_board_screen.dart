@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/project/Project.dart';
-import '../models/task.dart';
+import '../models/task/task.dart';
 import '../services/api_service.dart';
 import '../widgets/column_section.dart';
+import 'create_task_screen.dart';
 
 class TaskBoardScreen extends StatefulWidget {
   final Project project;
@@ -47,6 +48,23 @@ class _TaskBoardScreenState extends State<TaskBoardScreen> {
             }).toList(),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final result = await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CreateTaskScreen(projectId: widget.project.id),
+            ),
+          );
+          if (result == true) {
+            setState(() {
+              _tasksFuture = ApiService.fetchTasks(widget.project.id);
+            });
+          }
+        },
+        child: const Icon(Icons.add),
+        tooltip: 'Create Task',
       ),
     );
   }

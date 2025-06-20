@@ -108,6 +108,7 @@ public class DbUtils {
                 if (!isSerializable(fieldValue) && !(field.getName().equalsIgnoreCase("createdOn")
                         || field.getName().equalsIgnoreCase("modifiedOn")
                         || field.getName().equalsIgnoreCase("dateOfBirth")
+                        || field.getName().equalsIgnoreCase("deadline")
                         || field.getName().equalsIgnoreCase("transactionDate"))) {
                     // If the field is not serializable, convert it to a JSON string
                     fieldValue = mapper.writeValueAsString(fieldValue); // Convert to JSON string
